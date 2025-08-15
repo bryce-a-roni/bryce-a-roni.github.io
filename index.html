@@ -13,6 +13,7 @@
       }
       .token-input-container {
         display: flex;
+        column-gap: 24px;
       }
       iframe {
         height: calc(100vh - 68px);
@@ -26,17 +27,24 @@
         <h1>Welcome</h1>
       </div>
       <div class="token-input-container">
-        <label>Token</label>
-        <input type="text" id="tokenInput">
+        <label>Token:
+          <input type="text" id="tokenInput">
+        </label>
         <button onclick="showIFrame()">Show iFrame</button>
       </div>
-      <iframe src="http://localhost/sf/esign_event/auth/iframe_landing_page?token=EV08ace6b6fd2bdc14a36c885c0ce4203e"></iframe>
+      <div class="iframe-container">
+        <iframe src="http://localhost/sf/esign_event/auth/iframe_landing_page?token=EV08ace6b6fd2bdc14a36c885c0ce4203e"></iframe>
+      </div>
     </div>
     <script>
       function showIFrame() {
         const token = document.getElementById("tokenInput")?.value;
         if (token) {
           alert("I have your token. See? " + token);
+          const newIFrame = document.createElement("iframe");
+          newIFrame.setAttribute("src", "http://localhost/sf/esign_event/auth/iframe_landing_page?token=" + token);
+          const iFrameContainer = document.getElementById("iframe-container");
+          iFrameContainer.replaceChildren([newIFrame]);
         }
       }
     </script>
