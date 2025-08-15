@@ -18,11 +18,24 @@
     </style>
   </head>
   <body>
-    <div class="content">
+    <div class="page">
       <div class="page-header">
         <h1>Welcome</h1>
       </div>
+      <div class="token-input-container">
+        <label>Token</label>
+        <input type="text" id="tokenInput">
+        <button onclick="showIFrame()">Show iFrame</button>
+      </div>
       <iframe src="http://localhost/sf/esign_event/auth/iframe_landing_page?token=EV08ace6b6fd2bdc14a36c885c0ce4203e"></iframe>
     </div>
+    <script>
+      function showIFrame() {
+        const token = document.getElementById("tokenInput"))?.value;
+        if (token) {
+          alert("I have your token. See? " + token);
+        }
+      }
+    </script>
   </body>
 </html>
