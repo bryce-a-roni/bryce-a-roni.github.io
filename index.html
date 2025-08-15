@@ -2,14 +2,19 @@
   <head>
     <title>Bryce-a-Roni's Page</title>
     <style>
+      .page-header {
+        height: 40px;
+      }
       iframe {
-        height: 100%;
+        height: calc(100vh - 40px);
         width: 100%;
       }
     </style>
   </head>
   <body>
-    <h1>Welcome</h1>
+    <div class="page-header">
+      <h1>Welcome</h1>
+    </div>
     <iframe src="http://localhost/sf/esign_event/auth/iframe_landing_page?token=EV08ace6b6fd2bdc14a36c885c0ce4203e"></iframe>
   </body>
 </html>
