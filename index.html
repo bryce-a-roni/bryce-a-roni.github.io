@@ -48,6 +48,14 @@
       <div class="iframe-container" id="iframeContainer"></div>
     </div>
     <script>
+      window.onload = function() {
+        // Get the query string from the current URL
+        const queryString = window.location.search;
+        // Create a URLSearchParams object from the query string
+        const urlParams = new URLSearchParams(queryString);
+        console.log("Page loaded", urlParams);
+      }
+      
       function showIFrame() {
         const env = document.getElementById("envSelect")?.value;
         const token = document.getElementById("tokenInput")?.value;
