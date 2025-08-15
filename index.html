@@ -11,19 +11,8 @@
       .page-header {
         height: 40px;
       }
-      .token-input-container {
-        display: flex;
-        column-gap: 24px;
-        height: 36px;
-      }
-      input, button {
-        height: 21px;
-      }
-      #tokenInput {
-        width: 280px;
-      }
       iframe {
-        height: calc(100vh - 104px);
+        height: calc(100vh - 64px);
         width: 100%;
       }
     </style>
@@ -31,39 +20,30 @@
   <body>
     <div class="page">
       <div class="page-header">
-        <h1>Welcome</h1>
-      </div>
-      <div class="token-input-container">
-        <label>Env:
-          <select id="envSelect">
-            <option value="http://localhost/sf/esign_event/auth/iframe_landing_page?token=" selected>Local</option>
-            <option value="https://simplifile.q1.intcx.net/sf/esign_event/auth/iframe_landing_page?token=">Q1</option>
-          </select>
-        </label>
-        <label>Token:
-          <input type="text" id="tokenInput">
-        </label>
-        <button onclick="showIFrame()">Show iFrame</button>
+        <h1>iFrame Test Page</h1>
       </div>
       <div class="iframe-container" id="iframeContainer"></div>
     </div>
     <script>
       window.onload = function() {
-        // Get the query string from the current URL
         const queryString = window.location.search;
-        // Create a URLSearchParams object from the query string
         const urlParams = new URLSearchParams(queryString);
-        console.log("Page loaded", urlParams);
-      }
-      
-      function showIFrame() {
-        const env = document.getElementById("envSelect")?.value;
-        const token = document.getElementById("tokenInput")?.value;
-        if (env && token) {
+        // TODO: Add a helpful message if params are missing
+        const env = urlParams.get("env");
+        let envUrl;
+        switch (env) {
+          case "local":
+            envUrl = "http://localhost/sf/esign_event/auth/iframe_landing_page?token=";
+          case "qa":
+            envUrl = "https://simplifile.q1.intcx.net/sf/esign_event/auth/iframe_landing_page?token=";
+            // TODO: Add other environments
+        }
+        const token = urlParams.get("token");
+        if (envUrl && token) {
           const newIFrame = document.createElement("iframe");
-          newIFrame.setAttribute("src", env + token);
+          newIFrame.setAttribute("src", envUrl + token);
           const iFrameContainer = document.getElementById("iframeContainer");
-          iFrameContainer.replaceChildren(newIFrame);
+          iFrameContainer.appendChild(newIFrame);
         }
       }
     </script>
