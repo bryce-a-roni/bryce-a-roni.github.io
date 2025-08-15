@@ -15,6 +15,9 @@
         display: flex;
         column-gap: 24px;
       }
+      #tokenInput {
+        width: 280px;
+      }
       iframe {
         height: calc(100vh - 68px);
         width: 100%;
@@ -32,7 +35,7 @@
         </label>
         <button onclick="showIFrame()">Show iFrame</button>
       </div>
-      <div class="iframe-container"></div>
+      <div class="iframe-container" id="iframeContainer"></div>
     </div>
     <script>
       function showIFrame() {
@@ -41,7 +44,7 @@
           alert("I have your token. See? " + token);
           const newIFrame = document.createElement("iframe");
           newIFrame.setAttribute("src", "http://localhost/sf/esign_event/auth/iframe_landing_page?token=" + token);
-          const iFrameContainer = document.getElementById("iframe-container");
+          const iFrameContainer = document.getElementById("iframeContainer");
           iFrameContainer.replaceChildren([newIFrame]);
         }
       }
