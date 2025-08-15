@@ -34,6 +34,12 @@
         <h1>Welcome</h1>
       </div>
       <div class="token-input-container">
+        <label>Env:
+          <select id="envSelect">
+            <option value="http://localhost/sf/esign_event/auth/iframe_landing_page?token=" selected>Local</option>
+            <option value="https://simplifile.q1.intcx.net/sf/esign_event/auth/iframe_landing_page?token=">Q1</option>
+          </select>
+        </label>
         <label>Token:
           <input type="text" id="tokenInput">
         </label>
@@ -43,10 +49,11 @@
     </div>
     <script>
       function showIFrame() {
+        const env = document.getElementById("envSelect")?.value;
         const token = document.getElementById("tokenInput")?.value;
-        if (token) {
+        if (env && token) {
           const newIFrame = document.createElement("iframe");
-          newIFrame.setAttribute("src", "http://localhost/sf/esign_event/auth/iframe_landing_page?token=" + token);
+          newIFrame.setAttribute("src", env + token);
           const iFrameContainer = document.getElementById("iframeContainer");
           iFrameContainer.replaceChildren(newIFrame);
         }
