@@ -34,8 +34,10 @@
         switch (env) {
           case "local":
             envUrl = "http://localhost/sf/esign_event/auth/iframe_landing_page?token=";
+            break;
           case "qa":
             envUrl = "https://simplifile.q1.intcx.net/sf/esign_event/auth/iframe_landing_page?token=";
+            break;
             // TODO: Add other environments
         }
         const token = urlParams.get("token");
