@@ -45,7 +45,6 @@
       function showIFrame() {
         const token = document.getElementById("tokenInput")?.value;
         if (token) {
-          alert("I have your token. See? " + token);
           const newIFrame = document.createElement("iframe");
           newIFrame.setAttribute("src", "http://localhost/sf/esign_event/auth/iframe_landing_page?token=" + token);
           const iFrameContainer = document.getElementById("iframeContainer");
